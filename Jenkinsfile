@@ -2,10 +2,9 @@ pipeline {
      agent any
 
      stages {
-        stage("Checkout") {
+        stage("compile") {
             steps {
-                git url: "https://github.com/tomwey2/calculator-spring-docker-jenkins.git",
-                    branch: "master"
+                sh "./mvnw compile"
             }
         }
     }
