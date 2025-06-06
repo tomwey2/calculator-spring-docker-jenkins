@@ -7,5 +7,10 @@ pipeline {
                 sh "./mvnw compile"
             }
         }
+        stage("Unit test") {
+            steps {
+                sh "./mvnw test"
+            }
+        }
     }
  }
