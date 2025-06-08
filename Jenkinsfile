@@ -1,6 +1,8 @@
 pipeline {
      agent any
-
+     environment {
+        GHCR_CREDENTIALS = credentials("tomwey2-ghcr")
+     }
      stages {
         stage("compile") {
             steps {
@@ -31,6 +33,18 @@ pipeline {
                     reportName: "Checkstyle Report"
                 ])
             }
+        }
+        stage("Docker build") {
+            steps {
+                sh "docker build -t ghcr.io/tomwey2/calculator:latest ."
+                sh "echo $GHCR_CREDENTIALS_PSW | docker login -u $GHCR_CREDENTIALS_USR --password-stdin"
+                sh "docker push ghcr.io/tomwey2/calculator:latest"
+            }
+        }
+    }
+    post {
+        always {
+            sh "docker logout"
         }
     }
  }
