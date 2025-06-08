@@ -1,5 +1,8 @@
 pipeline {
      agent any
+     tools {
+        docker "latest"
+     }
      environment {
         GHCR_CREDENTIALS = credentials("tomwey2-ghcr")
      }
