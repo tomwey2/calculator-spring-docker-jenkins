@@ -1,12 +1,15 @@
 pipeline {
      agent any
-     tools {
-        docker "docker-latest"
-     }
      environment {
         GHCR_CREDENTIALS = credentials("tomwey2-ghcr")
      }
      stages {
+        stage("initialize") {
+            steps {
+                def dockerHome = tool 'docker'
+                env.PATH = "${dockerHome}/bin:${env.PATH}"
+            }
+        }
         stage("compile") {
             steps {
                 sh "./mvnw compile"
