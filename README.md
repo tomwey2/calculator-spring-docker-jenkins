@@ -1,35 +1,54 @@
-# Calculator Spring Boot Docker Jenkins
+# Calculator Spring Boot Application mit Docker und Jenkins
 
-Ein einfaches, aber leistungsfähiges Projekt, das einen Taschenrechner als Spring Boot-Anwendung implementiert. Das Projekt ist mit Docker containerisiert und nutzt Jenkins für CI/CD (Continuous Integration/Continuous Deployment).
+Dieses Projekt ist eine einfache **Calculator Spring Boot-Anwendung**, die mit **Docker** containerisiert und über **Jenkins** automatisiert gebaut, getestet und bereitgestellt wird.
 
-## 📌 Features
-- **Spring Boot**: Backend-Implementierung des Taschenrechners mit REST-API.
+---
+
+## 📌 Projektübersicht
+- **Spring Boot**: Backend-Anwendung für einen einfachen Taschenrechner.
 - **Docker**: Containerisierung der Anwendung für einfache Bereitstellung.
-- **Jenkins**: Automatisierte Builds, Tests und Deployments.
-- **REST-API**: Einfache HTTP-Endpunkte für mathematische Operationen.
+- **Jenkins**: CI/CD-Pipeline zur Automatisierung von Build, Test und Deployment.
 
-## 🛠 Technologien
-- **Java 17**: Programmiersprache für die Backend-Logik.
-- **Spring Boot 3.x**: Framework für die Webanwendung.
-- **Docker**: Containerisierung der Anwendung.
-- **Jenkins**: CI/CD-Pipeline für Automatisierung.
-- **Maven**: Build-Tool für die Abhängigkeitsverwaltung.
+---
 
-## 🚀 Schnellstart
+## 🛠️ Voraussetzungen
+- [Java 17+](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+- [Maven](https://maven.apache.org/)
+- [Docker](https://www.docker.com/)
+- [Jenkins](https://www.jenkins.io/)
 
-### Voraussetzungen
-- [Docker](https://www.docker.com/) installiert
-- [Jenkins](https://www.jenkins.io/) (optional, für CI/CD)
-- [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) (falls lokal entwickelt wird)
-- [Maven](https://maven.apache.org/) (falls lokal gebaut wird)
+---
 
-### Anwendung starten
-1. **Docker-Image bauen und starten**
-   ```bash
-   docker build -t calculator-spring .
-   docker run -p 8080:8080 calculator-spring
-   ```
-2. **API aufrufen**
-   Die Anwendung stellt eine REST-API bereit, die unter `http://localhost:8080/api/calculate` erreichbar ist. Beispielaufruf:
-   ```bash
-   curl -X POST http://localhost:8080/api/calculate -H "Content-Type: application/json" -d '{"num1": 5, "num2": 3,
+## 🚀 Installation und Ausführung
+
+### 1. Projekt klonen
+```bash
+git clone https://github.com/tomwey2/calculator-spring-docker-jenkins.git
+cd calculator-spring-docker-jenkins
+```
+
+### 2. Anwendung lokal ausführen
+```bash
+mvn spring-boot:run
+```
+Die Anwendung ist dann unter [http://localhost:8080](http://localhost:8080) erreichbar.
+
+### 3. Docker-Image bauen und ausführen
+```bash
+docker build -t calculator-spring-app .
+docker run -p 8080:8080 calculator-spring-app
+```
+
+### 4. Jenkins-Pipeline einrichten
+1. Jenkins auf deinem Server oder lokal installieren.
+2. Ein neues Jenkins-Projekt erstellen und die `Jenkinsfile` aus diesem Repository verwenden.
+3. Die Pipeline ausführen, um Build, Test und Deployment zu automatisieren.
+
+---
+
+## 📂 Projektstruktur
+```
+calculator-spring-docker-jenkins/
+├── src/
+│   ├── main/
+│   │   ├──
