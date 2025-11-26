@@ -72,12 +72,25 @@ Die Anwendung bietet eine REST-API für grundlegende Rechenoperationen wie Addit
 ### CI/CD mit Jenkins
 Das Projekt enthält eine `Jenkinsfile`, die für die automatisierte Build- und Deployment-Pipeline verwendet werden kann. Stelle sicher, dass Jenkins korrekt konfiguriert ist, um die Pipeline auszuführen.
 
+## Tests
+Die Anwendung enthält Unit-Tests für die Rechenlogik und Integrationstests für die API. Um die Tests auszuführen, verwende den folgenden Befehl:
+```bash
+mvn test
+```
+
 ## API-Endpunkte
 Die Anwendung bietet folgende Endpunkte:
-- `GET /api/calculate/add?a={a}&b={b}`: Addition von `a` und `b`.
-- `GET /api/calculate/subtract?a={a}&b={b}`: Subtraktion von `a` und `b`.
-- `GET /api/calculate/multiply?a={a}&b={b}`: Multiplikation von `a` und `b`.
-- `GET /api/calculate/divide?a={a}&b={b}`: Division von `a` und `b`.
+- **Addition**: `GET /api/calculate/add?a={a}&b={b}`
+  Beispiel: `GET /api/calculate/add?a=5&b=3` → Ergebnis: `8`
+
+- **Subtraktion**: `GET /api/calculate/subtract?a={a}&b={b}`
+  Beispiel: `GET /api/calculate/subtract?a=5&b=3` → Ergebnis: `2`
+
+- **Multiplikation**: `GET /api/calculate/multiply?a={a}&b={b}`
+  Beispiel: `GET /api/calculate/multiply?a=5&b=3` → Ergebnis: `15`
+
+- **Division**: `GET /api/calculate/divide?a={a}&b={b}`
+  Beispiel: `GET /api/calculate/divide?a=6&b=3` → Ergebnis: `2`
 
 ## Lizenz
 Dieses Projekt steht unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Informationen.
