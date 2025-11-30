@@ -14,4 +14,9 @@ public class CalculatorController {
     String sum(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
         return String.valueOf(calculatorService.sum(a, b));
     }
+    
+    @RequestMapping("/square")
+    String square(@RequestParam("a") Integer a) {
+        return String.valueOf(calculatorService.square(a));
+    }
 }
