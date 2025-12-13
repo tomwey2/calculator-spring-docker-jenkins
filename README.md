@@ -1,8 +1,15 @@
 # Calculator Spring Boot Application with Docker and Jenkins
 
+![Java](https://img.shields.io/badge/Java-11-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-green)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 A simple calculator implemented as a Spring Boot application, exposed via a REST API. The project is containerized using Docker and includes a Jenkins pipeline for CI/CD.
 
 ## Table of Contents
+- [Quick Start](#quick-start)
 - [Features](#features)
 - [Technologies](#technologies)
 - [Prerequisites](#prerequisites)
@@ -14,8 +21,25 @@ A simple calculator implemented as a Spring Boot application, exposed via a REST
 - [API Endpoints](#api-endpoints)
 - [Testing](#testing)
 - [Contributing](#contributing)
+- [Roadmap](#roadmap)
 - [License](#license)
+- [Contact](#contact)
 - [Troubleshooting](#troubleshooting)
+
+## Quick Start
+To get started quickly:
+```bash
+# Clone the repository
+git clone https://github.com/tomwey2/calculator-spring-docker-jenkins.git
+cd calculator-spring-docker-jenkins
+
+# Run locally
+mvn spring-boot:run
+
+# Or run with Docker
+docker build -t calculator-spring-app .
+docker run -p 8080:8080 calculator-spring-app
+```
 
 ## Features
 - REST API for basic arithmetic operations: addition, subtraction, multiplication, and division.
@@ -95,6 +119,13 @@ The application provides the following endpoints:
 | Multiplication  | `GET /api/calculate/multiply?a={a}&b={b}` | `GET /api/calculate/multiply?a=5&b=3` | `15`             |
 | Division        | `GET /api/calculate/divide?a={a}&b={b}` | `GET /api/calculate/divide?a=6&b=3` | `2`              |
 
+### Example API Response
+```json
+{
+  "result": 8
+}
+```
+
 ## Testing
 Run the tests using Maven:
 ```bash
@@ -111,11 +142,29 @@ The report will be available in the `target/site/surefire-report.html` file.
 Contributions are welcome! Please follow these steps:
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push the branch to your fork.
-4. Open a pull request to the `main` branch of this repository.
+3. Follow the coding standards and ensure your changes are well-tested.
+4. Commit your changes and push the branch to your fork.
+5. Open a pull request to the `main` branch of this repository.
+
+### Guidelines
+- Write clean, modular, and readable code.
+- Ensure all tests pass before submitting a pull request.
+- Include comments and documentation for complex logic.
+- Follow the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html).
+
+## Roadmap
+- Add support for more advanced mathematical operations.
+- Implement user authentication for API endpoints.
+- Add Swagger/OpenAPI documentation for the API.
+- Improve error handling and logging.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+For questions or feedback, please reach out to:
+- **GitHub Issues**: [Open an issue](https://github.com/tomwey2/calculator-spring-docker-jenkins/issues)
+- **Email**: tomwey2@example.com
 
 ## Troubleshooting
 - **Port Conflict**: If port `8080` is already in use, stop the conflicting service or change the port in `application.properties`.
