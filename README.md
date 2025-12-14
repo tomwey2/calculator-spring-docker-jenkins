@@ -1,96 +1,147 @@
-# Calculator Spring Boot Application mit Docker und Jenkins
+# Calculator Spring Boot Application 🧮
 
-Ein einfacher Taschenrechner als Spring Boot-Anwendung, der über eine REST-API verfügbar ist. Das Projekt ist mit Docker containerisiert und verwendet Jenkins für die CI/CD-Pipeline.
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.1.0-green)](https://spring.io/projects/spring-boot)
+[![Docker](https://img.shields.io/badge/Docker-20.10.7-blue)](https://www.docker.com/)
+[![Jenkins](https://img.shields.io/badge/Jenkins-2.332.2-orange)](https://www.jenkins.io/)
 
-## Technologien
-- **Spring Boot**: Framework für die Java-Anwendung.
-- **Docker**: Containerisierung der Anwendung.
-- **Jenkins**: Automatisierte Builds und Deployments.
-- **Maven**: Build-Tool und Abhängigkeitsmanagement.
+A simple calculator application built with **Spring Boot**, containerized with **Docker**, and deployed using **Jenkins** for CI/CD. This project provides a REST API for basic arithmetic operations.
 
-## Funktionalität
-Die Anwendung bietet eine REST-API für grundlegende Rechenoperationen wie Addition, Subtraktion, Multiplikation und Division. Die API kann über HTTP-Endpunkte aufgerufen werden.
+## Features
+- REST API for addition, subtraction, multiplication, and division.
+- Dockerized for easy deployment.
+- Jenkins pipeline for automated builds and deployments.
+- Unit and integration tests for reliability.
 
-## Projektstruktur
+## Technologies
+- **Spring Boot 3.1.0**: Java framework for building the application.
+- **Docker 20.10.7**: Containerization of the application.
+- **Jenkins 2.332.2**: CI/CD pipeline automation.
+- **Maven**: Build tool and dependency management.
+
+## Prerequisites
+Ensure you have the following installed:
+- **Java 11+** (Recommended: OpenJDK 11)
+- **Maven 3.8.6+**
+- **Docker 20.10.7+**
+- **Jenkins 2.332.2+** (Optional, for CI/CD)
+
+## Installation and Execution
+### 1. Clone the Repository
+```bash
+git clone https://github.com/tomwey2/calculator-spring-docker-jenkins.git
+cd calculator-spring-docker-jenkins
+```
+
+### 2. Local Execution
+#### Build the Application
+```bash
+mvn clean install
+```
+
+#### Run the Application
+```bash
+mvn spring-boot:run
+```
+The application will start and be available at:
+👉 [http://localhost:8080](http://localhost:8080)
+
+### 3. Docker Execution
+#### Build the Docker Image
+```bash
+docker build -t calculator-spring-app .
+```
+
+#### Run the Container
+```bash
+docker run -p 8080:8080 calculator-spring-app
+```
+The application will be available at:
+👉 [http://localhost:8080](http://localhost:8080)
+
+### 4. CI/CD with Jenkins
+The project includes a `Jenkinsfile` for automated builds and deployments. To use it:
+1. Set up a Jenkins server.
+2. Create a new pipeline job and point it to this repository.
+3. Configure Jenkins to use the `Jenkinsfile` for the pipeline.
+
+## API Documentation
+The application provides the following endpoints:
+
+### Addition
+- **Endpoint**: `GET /api/calculate/add?a={a}&b={b}`
+- **Example**: `GET /api/calculate/add?a=5&b=3`
+- **Response**: `8`
+
+### Subtraction
+- **Endpoint**: `GET /api/calculate/subtract?a={a}&b={b}`
+- **Example**: `GET /api/calculate/subtract?a=5&b=3`
+- **Response**: `2`
+
+### Multiplication
+- **Endpoint**: `GET /api/calculate/multiply?a={a}&b={b}`
+- **Example**: `GET /api/calculate/multiply?a=5&b=3`
+- **Response**: `15`
+
+### Division
+- **Endpoint**: `GET /api/calculate/divide?a={a}&b={b}`
+- **Example**: `GET /api/calculate/divide?a=6&b=3`
+- **Response**: `2`
+
+### Error Handling
+- If division by zero is attempted, the API returns a `400 Bad Request` with an error message.
+
+## Testing
+Run the tests using Maven:
+```bash
+mvn test
+```
+
+### Test Coverage
+- Unit tests for `CalculatorService`.
+- Integration tests for `CalculatorController`.
+
+## Project Structure
 ```
 .
 ├── src
 │   ├── main
 │   │   ├── java/com/tomwey2/calculator
-│   │   │   ├── CalculatorApplication.java  # Hauptklasse der Spring Boot-Anwendung
-│   │   │   ├── CalculatorController.java    # REST-Controller für die API
-│   │   │   └── CalculatorService.java       # Logik für die Rechenoperationen
+│   │   │   ├── CalculatorApplication.java  # Main Spring Boot application
+│   │   │   ├── CalculatorController.java    # REST API endpoints
+│   │   │   └── CalculatorService.java       # Business logic
 │   │   └── resources
-│   │       └── application.properties       # Konfiguration der Anwendung
+│   │       └── application.properties       # Configuration
 │   └── test
 │       └── java/com/tomwey2/calculator
-│           ├── CalculatorApplicationTests.java  # Tests für die Anwendung
-│           └── CalculatorServiceTest.java       # Tests für die Rechenlogik
-├── Dockerfile                                # Docker-Konfiguration
-├── Jenkinsfile                               # Jenkins-Pipeline
-├── pom.xml                                   # Maven-Konfiguration
-└── README.md                                 # Projektbeschreibung
+│           ├── CalculatorApplicationTests.java  # Application tests
+│           └── CalculatorServiceTest.java       # Service tests
+├── Dockerfile                                # Docker configuration
+├── Jenkinsfile                               # Jenkins pipeline
+├── pom.xml                                   # Maven configuration
+└── README.md                                 # Project documentation
 ```
 
-## Voraussetzungen
-- Java 11 oder höher
-- Maven
-- Docker
-- Jenkins (optional, für CI/CD)
+## Contributing
+Contributions are welcome! Follow these steps:
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add your feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
 
-## Installation und Ausführung
-### Lokale Ausführung
-1. Klone das Repository:
-   ```bash
-   git clone https://github.com/tomwey2/calculator-spring-docker-jenkins.git
-   ```
-2. Navigiere in das Projektverzeichnis:
-   ```bash
-   cd calculator-spring-docker-jenkins
-   ```
-3. Baue die Anwendung mit Maven:
-   ```bash
-   mvn clean install
-   ```
-4. Starte die Anwendung:
-   ```bash
-   mvn spring-boot:run
-   ```
-   Die Anwendung ist nun unter `http://localhost:8080` verfügbar.
+## License
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
-### Ausführung mit Docker
-1. Baue das Docker-Image:
-   ```bash
-   docker build -t calculator-spring-app .
-   ```
-2. Starte den Container:
-   ```bash
-   docker run -p 8080:8080 calculator-spring-app
-   ```
-   Die Anwendung ist nun unter `http://localhost:8080` verfügbar.
+## Troubleshooting
+### Common Issues
+1. **Port 8080 already in use**:
+   - Solution: Stop the conflicting service or change the port in `application.properties`.
+2. **Docker build fails**:
+   - Solution: Ensure Docker is running and you have sufficient permissions.
+3. **Maven build fails**:
+   - Solution: Check your Java and Maven versions and ensure they meet the requirements.
 
-### CI/CD mit Jenkins
-Das Projekt enthält eine `Jenkinsfile`, die für die automatisierte Build- und Deployment-Pipeline verwendet werden kann. Stelle sicher, dass Jenkins korrekt konfiguriert ist, um die Pipeline auszuführen.
-
-## Tests
-Die Anwendung enthält Unit-Tests für die Rechenlogik und Integrationstests für die API. Um die Tests auszuführen, verwende den folgenden Befehl:
-```bash
-mvn test
-```
-
-## API-Endpunkte
-Die Anwendung bietet folgende Endpunkte:
-- **Addition**: `GET /api/calculate/add?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/add?a=5&b=3` → Ergebnis: `8`
-
-- **Subtraktion**: `GET /api/calculate/subtract?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/subtract?a=5&b=3` → Ergebnis: `2`
-
-- **Multiplikation**: `GET /api/calculate/multiply?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/multiply?a=5&b=3` → Ergebnis: `15`
-
-- **Division**: `GET /api/calculate/divide?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/divide?a=6&b=3` → Ergebnis: `2`
-
-## Lizenz
-Dieses Projekt steht unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Informationen.
+### Need Help?
+Open an issue on GitHub or contact the maintainers.
