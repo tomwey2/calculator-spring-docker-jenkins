@@ -1,96 +1,108 @@
-# Calculator Spring Boot Application mit Docker und Jenkins
+# Calculator Spring Boot Application with Docker and Jenkins
 
-Ein einfacher Taschenrechner als Spring Boot-Anwendung, der über eine REST-API verfügbar ist. Das Projekt ist mit Docker containerisiert und verwendet Jenkins für die CI/CD-Pipeline.
+A simple calculator implemented as a Spring Boot application, exposed via a REST API. The project is containerized using Docker and uses Jenkins for CI/CD.
 
-## Technologien
-- **Spring Boot**: Framework für die Java-Anwendung.
-- **Docker**: Containerisierung der Anwendung.
-- **Jenkins**: Automatisierte Builds und Deployments.
-- **Maven**: Build-Tool und Abhängigkeitsmanagement.
+## Technologies
+- **Spring Boot**: Framework for the Java application.
+- **Docker**: Containerization of the application.
+- **Jenkins**: Automated builds and deployments.
+- **Maven**: Build tool and dependency management.
 
-## Funktionalität
-Die Anwendung bietet eine REST-API für grundlegende Rechenoperationen wie Addition, Subtraktion, Multiplikation und Division. Die API kann über HTTP-Endpunkte aufgerufen werden.
+## Features
+The application provides a REST API for basic arithmetic operations such as addition. The API can be accessed via HTTP endpoints.
 
-## Projektstruktur
+## Project Structure
 ```
 .
 ├── src
 │   ├── main
 │   │   ├── java/com/tomwey2/calculator
-│   │   │   ├── CalculatorApplication.java  # Hauptklasse der Spring Boot-Anwendung
-│   │   │   ├── CalculatorController.java    # REST-Controller für die API
-│   │   │   └── CalculatorService.java       # Logik für die Rechenoperationen
+│   │   │   ├── CalculatorApplication.java  # Main class of the Spring Boot application
+│   │   │   ├── CalculatorController.java    # REST controller for the API
+│   │   │   └── CalculatorService.java       # Logic for arithmetic operations
 │   │   └── resources
-│   │       └── application.properties       # Konfiguration der Anwendung
+│   │       └── application.properties       # Application configuration
 │   └── test
 │       └── java/com/tomwey2/calculator
-│           ├── CalculatorApplicationTests.java  # Tests für die Anwendung
-│           └── CalculatorServiceTest.java       # Tests für die Rechenlogik
-├── Dockerfile                                # Docker-Konfiguration
-├── Jenkinsfile                               # Jenkins-Pipeline
-├── pom.xml                                   # Maven-Konfiguration
-└── README.md                                 # Projektbeschreibung
+│           ├── CalculatorApplicationTests.java  # Tests for the application
+│           └── CalculatorServiceTest.java       # Tests for arithmetic logic
+├── Dockerfile                                # Docker configuration
+├── Jenkinsfile                               # Jenkins pipeline
+├── pom.xml                                   # Maven configuration
+└── README.md                                 # Project description
 ```
 
-## Voraussetzungen
-- Java 11 oder höher
+## Prerequisites
+- Java 11 or higher
 - Maven
 - Docker
-- Jenkins (optional, für CI/CD)
+- Jenkins (optional, for CI/CD)
 
-## Installation und Ausführung
-### Lokale Ausführung
-1. Klone das Repository:
+## Installation and Execution
+### Local Execution
+1. Clone the repository:
    ```bash
    git clone https://github.com/tomwey2/calculator-spring-docker-jenkins.git
    ```
-2. Navigiere in das Projektverzeichnis:
+2. Navigate to the project directory:
    ```bash
    cd calculator-spring-docker-jenkins
    ```
-3. Baue die Anwendung mit Maven:
+3. Build the application with Maven:
    ```bash
    mvn clean install
    ```
-4. Starte die Anwendung:
+4. Start the application:
    ```bash
    mvn spring-boot:run
    ```
-   Die Anwendung ist nun unter `http://localhost:8080` verfügbar.
+   The application will be available at `http://localhost:8080`.
 
-### Ausführung mit Docker
-1. Baue das Docker-Image:
+### Execution with Docker
+1. Build the Docker image:
    ```bash
    docker build -t calculator-spring-app .
    ```
-2. Starte den Container:
+2. Start the container:
    ```bash
    docker run -p 8080:8080 calculator-spring-app
    ```
-   Die Anwendung ist nun unter `http://localhost:8080` verfügbar.
+   The application will be available at `http://localhost:8080`.
 
-### CI/CD mit Jenkins
-Das Projekt enthält eine `Jenkinsfile`, die für die automatisierte Build- und Deployment-Pipeline verwendet werden kann. Stelle sicher, dass Jenkins korrekt konfiguriert ist, um die Pipeline auszuführen.
+### CI/CD with Jenkins
+The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## Tests
-Die Anwendung enthält Unit-Tests für die Rechenlogik und Integrationstests für die API. Um die Tests auszuführen, verwende den folgenden Befehl:
+The application includes unit tests for arithmetic logic and integration tests for the API. To run the tests, use the following command:
 ```bash
 mvn test
 ```
 
-## API-Endpunkte
-Die Anwendung bietet folgende Endpunkte:
-- **Addition**: `GET /api/calculate/add?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/add?a=5&b=3` → Ergebnis: `8`
+## REST API Endpoints
+The application currently provides the following endpoint:
 
-- **Subtraktion**: `GET /api/calculate/subtract?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/subtract?a=5&b=3` → Ergebnis: `2`
+### Addition
+- **Endpoint**: `GET /sum?a={a}&b={b}`
+- **Description**: Returns the sum of two integers.
+- **Parameters**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Example Request**:
+  ```bash
+  curl "http://localhost:8080/sum?a=5&b=3"
+  ```
+- **Example Response**:
+  ```json
+  8
+  ```
 
-- **Multiplikation**: `GET /api/calculate/multiply?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/multiply?a=5&b=3` → Ergebnis: `15`
+## Error Handling
+- If non-integer values are provided for `a` or `b`, the API will return a `400 Bad Request` error.
 
-- **Division**: `GET /api/calculate/divide?a={a}&b={b}`
-  Beispiel: `GET /api/calculate/divide?a=6&b=3` → Ergebnis: `2`
+## Future Improvements
+- Add endpoints for subtraction, multiplication, and division.
+- Enhance error handling for division by zero.
+- Add input validation for edge cases.
 
-## Lizenz
-Dieses Projekt steht unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Informationen.
+## License
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
