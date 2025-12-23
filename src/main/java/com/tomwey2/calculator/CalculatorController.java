@@ -14,4 +14,19 @@ public class CalculatorController {
     String sum(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
         return String.valueOf(calculatorService.sum(a, b));
     }
+
+    @RequestMapping("/subtract")
+    String subtract(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
+        return String.valueOf(calculatorService.subtract(a, b));
+    }
+
+    @RequestMapping("/multiply")
+    String multiply(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
+        return String.valueOf(calculatorService.multiply(a, b));
+    }
+
+    @RequestMapping("/divide")
+    String divide(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
+        return String.valueOf(calculatorService.divide(a, b));
+    }
 }
