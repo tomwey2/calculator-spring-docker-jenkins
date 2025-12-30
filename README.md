@@ -78,10 +78,12 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 The application currently provides the following REST API endpoint:
 
 ### Addition
-- **Endpoint**: `GET /sum`
+- **Method**: `GET`
+- **Endpoint**: `/sum`
+- **Description**: Returns the sum of two integers.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -91,17 +93,38 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Improvements
-- Add endpoints for subtraction, multiplication, and division.
-- Implement input validation and error handling.
-- Add support for more complex operations (e.g., exponentiation, square root).
-- Include API documentation using Swagger or OpenAPI.
+## Future Endpoints
+The following endpoints are planned for future implementation:
+
+| Operation      | Method | Endpoint | Parameters | Description                     |
+|----------------|--------|----------|------------|---------------------------------|
+| Subtraction    | GET    | `/sub`   | `a`, `b`   | Returns the difference of `a` and `b` |
+| Multiplication | GET    | `/mul`   | `a`, `b`   | Returns the product of `a` and `b`   |
+| Division       | GET    | `/div`   | `a`, `b`   | Returns the quotient of `a` and `b`   |
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
 ```
+
+## Sample Requests
+Here are some sample requests to interact with the API:
+
+### Addition
+```bash
+curl "http://localhost:8080/sum?a=10&b=20"
+```
+**Response**:
+```plaintext
+30
+```
+
+## Future Improvements
+- Implement endpoints for subtraction, multiplication, and division.
+- Add input validation and error handling.
+- Support for more complex operations (e.g., exponentiation, square root).
+- Include API documentation using Swagger or OpenAPI.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
