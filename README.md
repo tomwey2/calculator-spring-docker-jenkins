@@ -79,21 +79,31 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
+- **Description**: Returns the sum of two integers.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
 
+## Planned Endpoints
+The following endpoints are planned for future releases:
+
+| Endpoint | Description | Parameters | Example Request |
+|----------|-------------|------------|------------------|
+| `GET /subtract` | Returns the difference between two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/subtract?a=5&b=3"` |
+| `GET /multiply` | Returns the product of two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/multiply?a=5&b=3"` |
+| `GET /divide` | Returns the quotient of two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/divide?a=6&b=3"` |
+
 ## Future Improvements
-- Add endpoints for subtraction, multiplication, and division.
-- Implement input validation and error handling.
+- Implement planned endpoints for subtraction, multiplication, and division.
+- Add input validation and error handling.
 - Add support for more complex operations (e.g., exponentiation, square root).
 - Include API documentation using Swagger or OpenAPI.
 
