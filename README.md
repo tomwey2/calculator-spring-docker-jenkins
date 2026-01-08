@@ -79,9 +79,10 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
+- **Description**: Returns the sum of two integers.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
