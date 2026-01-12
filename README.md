@@ -83,6 +83,7 @@ The application currently provides the following REST API endpoint:
 - **Parameters**:
   - `a` (integer, required): First operand
   - `b` (integer, required): Second operand
+- **Response**: The result of the addition as a plain text string.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -92,18 +93,18 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-### Planned Endpoints
-The following endpoints are planned for future development:
-
-| Endpoint      | Method | Description                     | Parameters                     | Example Request                              |
-|---------------|--------|---------------------------------|--------------------------------|----------------------------------------------|
-| `/subtract`   | GET    | Subtracts two integers          | `a` (integer), `b` (integer)   | `curl "http://localhost:8080/subtract?a=5&b=3"` |
-| `/multiply`   | GET    | Multiplies two integers         | `a` (integer), `b` (integer)   | `curl "http://localhost:8080/multiply?a=5&b=3"` |
-| `/divide`     | GET    | Divides two integers            | `a` (integer), `b` (integer)   | `curl "http://localhost:8080/divide?a=6&b=3"`   |
-
 ## Error Handling
 The API may return the following error responses:
 - **400 Bad Request**: If required parameters (`a` or `b`) are missing or invalid.
+  - **Example Response**:
+    ```json
+    {
+      "timestamp": "2023-10-01T12:00:00.000+00:00",
+      "status": 400,
+      "error": "Bad Request",
+      "message": "Required parameter 'a' is missing."
+    }
+    ```
 - **500 Internal Server Error**: For unexpected server-side issues.
 
 ## Testing
@@ -116,7 +117,7 @@ mvn test
 - **Addition Test**: Verify that the `/sum` endpoint returns the correct result for valid inputs.
 - **Error Test**: Verify that the API returns a `400 Bad Request` for missing or invalid parameters.
 
-## Usage
+## Usage Examples
 To interact with the API, use tools like `curl`, Postman, or any HTTP client. Here are some examples:
 
 ### Using `curl`
