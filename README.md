@@ -77,7 +77,7 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application provides the following REST API endpoint:
 
-### Addition
+### 1. Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Returns the sum of two integers.
 - **Parameters**:
@@ -92,17 +92,26 @@ The application provides the following REST API endpoint:
   8
   ```
 
-## Future Improvements
-- Add endpoints for subtraction, multiplication, and division.
-- Implement input validation and error handling.
-- Add support for more complex operations (e.g., exponentiation, square root).
-- Include API documentation using Swagger or OpenAPI.
+### Future Endpoints
+The following endpoints are planned for future development:
+
+| Endpoint | Method | Description | Parameters | Example Request |
+|----------|--------|-------------|------------|------------------|
+| `/subtract` | GET | Subtracts two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/subtract?a=5&b=3"` |
+| `/multiply` | GET | Multiplies two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/multiply?a=5&b=3"` |
+| `/divide` | GET | Divides two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/divide?a=6&b=3"` |
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
 ```
+
+## Future Improvements
+- Add endpoints for subtraction, multiplication, and division.
+- Implement input validation and error handling.
+- Add support for more complex operations (e.g., exponentiation, square root).
+- Include API documentation using Swagger or OpenAPI.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
