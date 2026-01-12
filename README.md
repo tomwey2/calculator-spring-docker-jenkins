@@ -75,7 +75,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application provides the following REST API endpoint:
+The application currently provides the following REST API endpoint:
 
 ### 1. Addition
 - **Endpoint**: `GET /sum`
@@ -92,14 +92,19 @@ The application provides the following REST API endpoint:
   8
   ```
 
-### Future Endpoints
+### Planned Endpoints
 The following endpoints are planned for future development:
 
-| Endpoint | Method | Description | Parameters | Example Request |
-|----------|--------|-------------|------------|------------------|
-| `/subtract` | GET | Subtracts two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/subtract?a=5&b=3"` |
-| `/multiply` | GET | Multiplies two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/multiply?a=5&b=3"` |
-| `/divide` | GET | Divides two integers | `a` (integer), `b` (integer) | `curl "http://localhost:8080/divide?a=6&b=3"` |
+| Endpoint      | Method | Description                     | Parameters                     | Example Request                              |
+|---------------|--------|---------------------------------|--------------------------------|----------------------------------------------|
+| `/subtract`   | GET    | Subtracts two integers          | `a` (integer), `b` (integer)   | `curl "http://localhost:8080/subtract?a=5&b=3"` |
+| `/multiply`   | GET    | Multiplies two integers         | `a` (integer), `b` (integer)   | `curl "http://localhost:8080/multiply?a=5&b=3"` |
+| `/divide`     | GET    | Divides two integers            | `a` (integer), `b` (integer)   | `curl "http://localhost:8080/divide?a=6&b=3"`   |
+
+## Error Handling
+The API may return the following error responses:
+- **400 Bad Request**: If required parameters (`a` or `b`) are missing or invalid.
+- **500 Internal Server Error**: For unexpected server-side issues.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
@@ -107,10 +112,29 @@ The application includes unit tests for the calculation logic and integration te
 mvn test
 ```
 
+### Example Test Cases
+- **Addition Test**: Verify that the `/sum` endpoint returns the correct result for valid inputs.
+- **Error Test**: Verify that the API returns a `400 Bad Request` for missing or invalid parameters.
+
+## Usage
+To interact with the API, use tools like `curl`, Postman, or any HTTP client. Here are some examples:
+
+### Using `curl`
+```bash
+# Addition
+curl "http://localhost:8080/sum?a=10&b=20"
+```
+
+### Using Postman
+1. Open Postman and create a new request.
+2. Set the request method to `GET`.
+3. Enter the URL: `http://localhost:8080/sum?a=10&b=20`.
+4. Send the request and verify the response.
+
 ## Future Improvements
-- Add endpoints for subtraction, multiplication, and division.
-- Implement input validation and error handling.
-- Add support for more complex operations (e.g., exponentiation, square root).
+- Implement endpoints for subtraction, multiplication, and division.
+- Add input validation and robust error handling.
+- Support for more complex operations (e.g., exponentiation, square root).
 - Include API documentation using Swagger or OpenAPI.
 
 ## License
