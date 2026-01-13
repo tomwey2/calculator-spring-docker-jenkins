@@ -75,7 +75,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoints:
 
 ### Addition
 - **Endpoint**: `GET /sum`
@@ -92,52 +92,18 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
-
-### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
+### Square
+- **Endpoint**: `GET /square`
+- **Description**: Squares an integer and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `x` (integer): Operand
 - **Example Request**:
   ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
+  curl "http://localhost:8080/square?x=5"
   ```
 - **Response**:
   ```plaintext
-  2
-  ```
-
-### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
-
-### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
+  25
   ```
 
 ## Testing
