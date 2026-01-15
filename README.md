@@ -35,7 +35,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- Java 21
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -81,8 +81,8 @@ The application currently provides the following REST API endpoint:
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -92,15 +92,15 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Endpoints
+## Planned Endpoints
 The following endpoints are planned for future improvements:
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/subtract?a=5&b=3"
@@ -114,8 +114,8 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/multiply?a=5&b=3"
@@ -129,8 +129,8 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/divide?a=6&b=3"
@@ -139,6 +139,13 @@ The following endpoints are planned for future improvements:
   ```plaintext
   2
   ```
+
+## Response Format
+All endpoints return a plain text response containing the result of the arithmetic operation.
+
+## Error Handling
+- If required parameters are missing, the API will return a `400 Bad Request` error.
+- If invalid values are provided (e.g., non-integer values), the API will return a `400 Bad Request` error.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
