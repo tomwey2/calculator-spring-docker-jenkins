@@ -35,7 +35,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- Java 21 or higher
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -74,15 +74,15 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
+## API Documentation
+The application provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -92,15 +92,15 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
+## Planned Endpoints
+The following endpoints are planned for future development:
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/subtract?a=5&b=3"
@@ -114,8 +114,8 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/multiply?a=5&b=3"
@@ -129,8 +129,8 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/divide?a=6&b=3"
