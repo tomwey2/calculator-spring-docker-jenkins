@@ -81,8 +81,8 @@ The application currently provides the following REST API endpoint:
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -92,59 +92,20 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
-
-### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
-
-### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
-
-### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+## Error Handling
+- If invalid parameters are provided (e.g., non-integer values), the application will return a `400 Bad Request` error.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
 ```
+
+## Future Improvements
+The following endpoints are planned for future versions:
+- Subtraction: `GET /subtract`
+- Multiplication: `GET /multiply`
+- Division: `GET /divide`
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
