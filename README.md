@@ -3,7 +3,7 @@
 A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (currently supports addition).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
@@ -40,7 +40,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
 
-## Installation and Execution
+## Quick Start
 ### Local Execution
 1. Clone the repository:
    ```bash
@@ -74,15 +74,14 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
-
+## REST API Documentation
 ### Addition
-- **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Method**: `GET`
+- **Path**: `/sum`
+- **Description**: Adds two integers and returns the result as plaintext.
+- **Query Parameters**:
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -92,13 +91,14 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Endpoints
+## Future Endpoints (Planned)
 The following endpoints are planned for future improvements:
 
 ### Subtraction
-- **Endpoint**: `GET /subtract`
+- **Method**: `GET`
+- **Path**: `/subtract`
 - **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
 - **Example Request**:
@@ -111,9 +111,10 @@ The following endpoints are planned for future improvements:
   ```
 
 ### Multiplication
-- **Endpoint**: `GET /multiply`
+- **Method**: `GET`
+- **Path**: `/multiply`
 - **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
 - **Example Request**:
@@ -126,9 +127,10 @@ The following endpoints are planned for future improvements:
   ```
 
 ### Division
-- **Endpoint**: `GET /divide`
+- **Method**: `GET`
+- **Path**: `/divide`
 - **Description**: Divides two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
 - **Example Request**:
