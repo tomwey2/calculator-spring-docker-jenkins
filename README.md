@@ -40,7 +40,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
 
-## Installation and Execution
+## Quick Start
 ### Local Execution
 1. Clone the repository:
    ```bash
@@ -75,30 +75,35 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoint:
 
-### Addition
-- **Endpoint**: `GET /sum`
+### Sum
+- **Method**: `GET`
+- **Path**: `/sum`
 - **Description**: Adds two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+- **Response**: Plaintext result of the sum.
+
+**Example Request**:
+```bash
+curl "http://localhost:8080/sum?a=5&b=3"
+```
+
+**Response**:
+```plaintext
+8
+```
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
 
 ### Subtraction
-- **Endpoint**: `GET /subtract`
+- **Method**: `GET`
+- **Path**: `/subtract`
 - **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
 - **Example Request**:
@@ -111,9 +116,10 @@ The following endpoints are planned for future improvements:
   ```
 
 ### Multiplication
-- **Endpoint**: `GET /multiply`
+- **Method**: `GET`
+- **Path**: `/multiply`
 - **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
 - **Example Request**:
@@ -126,9 +132,10 @@ The following endpoints are planned for future improvements:
   ```
 
 ### Division
-- **Endpoint**: `GET /divide`
+- **Method**: `GET`
+- **Path**: `/divide`
 - **Description**: Divides two integers and returns the result.
-- **Parameters**:
+- **Query Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
 - **Example Request**:
@@ -145,6 +152,9 @@ The application includes unit tests for the calculation logic and integration te
 ```bash
 mvn test
 ```
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
