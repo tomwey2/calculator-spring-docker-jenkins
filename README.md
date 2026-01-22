@@ -1,9 +1,23 @@
 # Calculator Spring Boot Application
 
-A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
+A **RESTful calculator API** built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
+
+## Table of Contents
+- [Features](#features)
+- [Technologies](#technologies)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Quick Start](#quick-start)
+- [REST API Documentation](#rest-api-documentation)
+  - [Addition](#addition)
+  - [Future Endpoints](#future-endpoints)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (currently supports addition).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
@@ -40,7 +54,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
 
-## Installation and Execution
+## Quick Start
 ### Local Execution
 1. Clone the repository:
    ```bash
@@ -50,11 +64,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
    ```bash
    cd calculator-spring-docker-jenkins
    ```
-3. Build the application using Maven:
-   ```bash
-   mvn clean install
-   ```
-4. Run the application:
+3. Build and run the application:
    ```bash
    mvn spring-boot:run
    ```
@@ -74,77 +84,85 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
+
+## REST API Documentation
+The application provides RESTful endpoints for arithmetic operations.
 
 ### Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Request Method**: `GET`
+- **Query Parameters**:
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**:
+  - **Success**: Plain text with the result (e.g., `8`)
+  - **Error**: HTTP 400 if parameters are missing or invalid
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
+### Future Endpoints
+The following endpoints are planned for future improvements and will follow the same format as above.
 
-### Subtraction
+#### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Query Parameters**:
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/subtract?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   2
   ```
 
-### Multiplication
+#### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Query Parameters**:
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/multiply?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   15
   ```
 
-### Division
+#### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Query Parameters**:
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/divide?a=6&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   2
   ```
 
 ## Testing
-The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
+Run the tests using:
 ```bash
 mvn test
 ```
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
