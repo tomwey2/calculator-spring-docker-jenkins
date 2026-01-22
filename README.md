@@ -40,7 +40,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
 
-## Installation and Execution
+## Quick Start
 ### Local Execution
 1. Clone the repository:
    ```bash
@@ -74,23 +74,26 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
+## REST API Documentation
+The application provides the following REST API endpoints:
 
-### Addition
+### 1. Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plaintext (e.g., `8`)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - Returns `400 Bad Request` if parameters are missing or invalid.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
@@ -145,6 +148,10 @@ The application includes unit tests for the calculation logic and integration te
 ```bash
 mvn test
 ```
+
+## Troubleshooting
+- **Port Conflict**: If the application fails to start, ensure port `8080` is not in use.
+- **Dependency Issues**: Run `mvn clean install` to resolve dependency conflicts.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
