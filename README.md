@@ -2,6 +2,22 @@
 
 A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
 
+## Table of Contents
+- [Features](#features)
+- [Technologies](#technologies)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation and Execution](#installation-and-execution)
+  - [Local Execution](#local-execution)
+  - [Docker Execution](#docker-execution)
+  - [CI/CD with Jenkins](#cicd-with-jenkins)
+- [REST API Documentation](#rest-api-documentation)
+  - [Addition](#addition)
+  - [Future Endpoints](#future-endpoints)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 - REST API for basic arithmetic operations.
 - Containerized using Docker for easy deployment.
@@ -74,68 +90,87 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
-
+## REST API Documentation
 ### Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Request Parameters**:
+  | Parameter | Type     | Description               |
+  |-----------|----------|---------------------------|
+  | `a`       | `Integer`| First operand (required)  |
+  | `b`       | `Integer`| Second operand (required) |
+
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+
+- **Successful Response**:
   ```plaintext
   8
   ```
 
-## Future Endpoints
+- **Error Responses**:
+  | Status Code | Description                     |
+  |--------------|---------------------------------|
+  | `400 Bad Request` | Missing or invalid parameters. |
+
+### Future Endpoints
 The following endpoints are planned for future improvements:
 
-### Subtraction
+#### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Request Parameters**:
+  | Parameter | Type     | Description               |
+  |-----------|----------|---------------------------|
+  | `a`       | `Integer`| First operand (required)  |
+  | `b`       | `Integer`| Second operand (required) |
+
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/subtract?a=5&b=3"
   ```
-- **Response**:
+
+- **Successful Response**:
   ```plaintext
   2
   ```
 
-### Multiplication
+#### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Request Parameters**:
+  | Parameter | Type     | Description               |
+  |-----------|----------|---------------------------|
+  | `a`       | `Integer`| First operand (required)  |
+  | `b`       | `Integer`| Second operand (required) |
+
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/multiply?a=5&b=3"
   ```
-- **Response**:
+
+- **Successful Response**:
   ```plaintext
   15
   ```
 
-### Division
+#### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+- **Request Parameters**:
+  | Parameter | Type     | Description               |
+  |-----------|----------|---------------------------|
+  | `a`       | `Integer`| First operand (required)  |
+  | `b`       | `Integer`| Second operand (required) |
+
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/divide?a=6&b=3"
   ```
-- **Response**:
+
+- **Successful Response**:
   ```plaintext
   2
   ```
@@ -145,6 +180,9 @@ The application includes unit tests for the calculation logic and integration te
 ```bash
 mvn test
 ```
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
