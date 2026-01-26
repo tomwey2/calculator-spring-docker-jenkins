@@ -2,6 +2,22 @@
 
 A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
 
+## Table of Contents
+- [Features](#features)
+- [Technologies](#technologies)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation and Execution](#installation-and-execution)
+  - [Local Execution](#local-execution)
+  - [Docker Execution](#docker-execution)
+  - [CI/CD with Jenkins](#cicd-with-jenkins)
+- [REST API Endpoints](#rest-api-endpoints)
+  - [Sum](#sum)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Postman Collection](#postman-collection)
+- [License](#license)
+
 ## Features
 - REST API for basic arithmetic operations.
 - Containerized using Docker for easy deployment.
@@ -74,76 +90,85 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
+## REST API Endpoints
+### Base URL
+All endpoints are relative to:
+```
+http://localhost:8080
+```
 
-### Addition
-- **Endpoint**: `GET /sum`
+### Sum
+- **Method**: `GET`
+- **Endpoint**: `/sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plain text (`text/plain`)
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Missing or invalid parameters
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - If either `a` or `b` is missing, the API will return a `400 Bad Request` error.
+  - The API handles large integers within the limits of Java's `Integer` type.
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
-
-### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
-
-### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
-
-### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+## Usage
+To quickly test the API, use the following `curl` command:
+```bash
+curl "http://localhost:8080/sum?a=10&b=20"
+```
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
+```
+
+## Postman Collection
+For easier API testing, you can import the following Postman collection:
+```json
+{
+  "info": {
+    "_postman_id": "12345678-1234-1234-1234-123456789012",
+    "name": "Calculator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sum",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/sum?a=5&b=3",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["sum"],
+          "query": [
+            {
+              "key": "a",
+              "value": "5"
+            },
+            {
+              "key": "b",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
 ```
 
 ## License
