@@ -19,7 +19,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 - [License](#license)
 
 ## Features
-- REST API for basic arithmetic operations (currently supports **sum**).
+- REST API for basic arithmetic operations.
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
