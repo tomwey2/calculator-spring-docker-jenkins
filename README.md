@@ -74,17 +74,16 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Documentation
+## REST API Endpoints
 ### Base URL
 All endpoints are relative to:
 ```
 http://localhost:8080
 ```
 
-### Endpoints
-
-#### Sum
-- **Endpoint**: `GET /sum`
+### Sum
+- **Method**: `GET`
+- **Endpoint**: `/sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
   - `a` (integer, required): First operand
@@ -104,6 +103,12 @@ http://localhost:8080
 - **Notes**:
   - If either `a` or `b` is missing, the API will return a `400 Bad Request` error.
   - The API handles large integers within the limits of Java's `Integer` type.
+
+## Usage
+To quickly test the API, use the following `curl` command:
+```bash
+curl "http://localhost:8080/sum?a=10&b=20"
+```
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
