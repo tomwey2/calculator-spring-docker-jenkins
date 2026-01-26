@@ -2,6 +2,22 @@
 
 A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
 
+## Table of Contents
+- [Features](#features)
+- [Technologies](#technologies)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation and Execution](#installation-and-execution)
+  - [Local Execution](#local-execution)
+  - [Docker Execution](#docker-execution)
+  - [CI/CD with Jenkins](#cicd-with-jenkins)
+- [REST API Endpoints](#rest-api-endpoints)
+  - [Sum](#sum)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Postman Collection](#postman-collection)
+- [License](#license)
+
 ## Features
 - REST API for basic arithmetic operations (currently supports **sum**).
 - Containerized using Docker for easy deployment.
@@ -100,7 +116,7 @@ http://localhost:8080
   ```plaintext
   8
   ```
-- **Notes**:
+- **Error Handling**:
   - If either `a` or `b` is missing, the API will return a `400 Bad Request` error.
   - The API handles large integers within the limits of Java's `Integer` type.
 
@@ -114,6 +130,45 @@ curl "http://localhost:8080/sum?a=10&b=20"
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
+```
+
+## Postman Collection
+For easier API testing, you can import the following Postman collection:
+```json
+{
+  "info": {
+    "_postman_id": "12345678-1234-1234-1234-123456789012",
+    "name": "Calculator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sum",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/sum?a=5&b=3",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["sum"],
+          "query": [
+            {
+              "key": "a",
+              "value": "5"
+            },
+            {
+              "key": "b",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
 ```
 
 ## License
