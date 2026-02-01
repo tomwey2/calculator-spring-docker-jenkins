@@ -93,55 +93,7 @@ The application provides REST API endpoints for basic arithmetic operations. Bel
   8
   ```
 - **Error Handling**:
-  - If either `a` or `b` is missing or not an integer, the API will return a `400 Bad Request` error. *(Note: This behavior is planned for future improvements.)*
-
-### Future Endpoints
-The following endpoints are planned for future improvements and will follow the same documentation structure as above.
-
-#### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Example Response**:
-  ```plaintext
-  2
-  ```
-
-#### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Example Response**:
-  ```plaintext
-  15
-  ```
-
-#### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Example Response**:
-  ```plaintext
-  2
-  ```
+  - If either `a` or `b` is missing or not an integer, the API will return a `400 Bad Request` error.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
