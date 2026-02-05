@@ -75,7 +75,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoint:
 
 ### Sum
 - **Endpoint**: `GET /sum`
@@ -91,9 +91,12 @@ The application currently provides the following REST API endpoint:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - If either `a` or `b` is missing, the API returns a `400 Bad Request` error.
+  - If `a` or `b` is not an integer, the API returns a `400 Bad Request` error.
 
-### Note
-Currently, only the `/sum` endpoint is implemented. The following endpoints are planned for future improvements:
+### Planned Endpoints
+The following endpoints are planned for future improvements:
 
 #### Subtraction
 - **Endpoint**: `GET /subtract`
