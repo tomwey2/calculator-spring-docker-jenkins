@@ -74,27 +74,27 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application provides the following REST API endpoint:
+## API Documentation
+The application provides REST API endpoints for arithmetic operations. Below is the documentation for the available endpoints.
 
 ### Sum
-| **Method** | **Endpoint** | **Description** |
-|------------|--------------|------------------|
-| `GET`      | `/sum`        | Adds two integers and returns the result. |
+**Endpoint**: `GET /sum`
 
-#### Parameters
+**Description**: Adds two integers and returns the result.
+
+**Parameters**:
 | **Name** | **Type** | **Required** | **Description** |
 |----------|----------|--------------|------------------|
 | `a`      | integer  | Yes          | First operand.   |
 | `b`      | integer  | Yes          | Second operand.  |
 
-#### Responses
+**Responses**:
 | **Status Code** | **Description** |
 |----------------|------------------|
 | `200 OK`        | Successfully returns the sum of `a` and `b`. |
 | `400 Bad Request` | Missing or invalid parameters. |
 
-#### Example Requests
+**Examples**:
 1. **Success Example**:
    ```bash
    curl "http://localhost:8080/sum?a=5&b=3"
@@ -131,7 +131,7 @@ The application provides the following REST API endpoint:
    1000000000
    ```
 
-#### Error Handling
+**Error Handling**:
 1. **Missing Parameter**:
    ```bash
    curl "http://localhost:8080/sum?a=5"
