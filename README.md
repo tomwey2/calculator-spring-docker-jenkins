@@ -78,22 +78,46 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 The application provides the following REST API endpoint:
 
 ### Sum
-- **Endpoint**: `GET /sum`
+- **Method**: `GET`
+- **Endpoint**: `/sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
   - `a` (integer, required): First operand
   - `b` (integer, required): Second operand
+- **Response Format**: Plaintext
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response (Success)**:
   ```plaintext
   8
   ```
+- **Example Request with Negative Numbers**:
+  ```bash
+  curl "http://localhost:8080/sum?a=-5&b=3"
+  ```
+- **Example Response (Success)**:
+  ```plaintext
+  -2
+  ```
+- **Example Request with Zero Values**:
+  ```bash
+  curl "http://localhost:8080/sum?a=0&b=0"
+  ```
+- **Example Response (Success)**:
+  ```plaintext
+  0
+  ```
 - **Error Handling**:
-  - If either `a` or `b` is missing, the API returns a `400 Bad Request` error.
-  - If `a` or `b` is not an integer, the API returns a `400 Bad Request` error.
+  - If either `a` or `b` is missing, the API returns a `400 Bad Request` error with the message:
+    ```plaintext
+    Required parameter 'a' is not present.
+    ```
+  - If `a` or `b` is not an integer, the API returns a `400 Bad Request` error with the message:
+    ```plaintext
+    Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'
+    ```
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
