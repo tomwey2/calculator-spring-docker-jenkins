@@ -82,6 +82,15 @@ The application provides REST API endpoints for arithmetic operations. Below is 
 
 **Description**: Adds two integers and returns the result.
 
+**Request Format**:
+```
+GET /sum?a={integer}&b={integer}
+```
+
+**Response Format**:
+- **Type**: Plain text
+- **Content**: The sum of `a` and `b` as an integer.
+
 **Parameters**:
 | **Name** | **Type** | **Required** | **Description** |
 |----------|----------|--------------|------------------|
@@ -131,6 +140,15 @@ The application provides REST API endpoints for arithmetic operations. Below is 
    1000000000
    ```
 
+5. **Maximum Integer Values Example**:
+   ```bash
+   curl "http://localhost:8080/sum?a=2147483647&b=0"
+   ```
+   **Response**:
+   ```plaintext
+   2147483647
+   ```
+
 **Error Handling**:
 1. **Missing Parameter**:
    ```bash
@@ -150,6 +168,10 @@ The application provides REST API endpoints for arithmetic operations. Below is 
    400 Bad Request: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'
    ```
 
+**Notes**:
+- The API currently supports only integer values. Floating-point numbers or non-numeric inputs will result in a `400 Bad Request` error.
+- Integer overflow is not explicitly handled. If the sum exceeds the maximum integer value (`2147483647`), the result will wrap around to a negative value.
+
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
@@ -160,6 +182,7 @@ mvn test
 - Add support for more arithmetic operations (e.g., subtraction, multiplication, division).
 - Implement logging for API requests and responses.
 - Add Swagger/OpenAPI documentation for the API.
+- Handle integer overflow gracefully.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
