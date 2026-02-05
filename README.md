@@ -77,12 +77,12 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -92,10 +92,10 @@ The application currently provides the following REST API endpoint:
   8
   ```
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
+### Note
+Currently, only the `/sum` endpoint is implemented. The following endpoints are planned for future improvements:
 
-### Subtraction
+#### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
@@ -110,7 +110,7 @@ The following endpoints are planned for future improvements:
   2
   ```
 
-### Multiplication
+#### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
@@ -125,7 +125,7 @@ The following endpoints are planned for future improvements:
   15
   ```
 
-### Division
+#### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
