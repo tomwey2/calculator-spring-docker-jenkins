@@ -1,9 +1,9 @@
 # Calculator Spring Boot Application
 
-A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
+A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD. This application provides a REST API for basic arithmetic operations, starting with the sum functionality.
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (currently supports addition).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
@@ -75,11 +75,12 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## REST API Documentation
-The application provides the following REST API endpoints:
+The application currently provides the following REST API endpoint:
 
 ### 1. Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result as plaintext.
+- **Content-Type**: `text/plain`
 - **Parameters**:
   | Name | Type     | Description          | Required |
   |------|----------|----------------------|----------|
@@ -97,7 +98,7 @@ The application provides the following REST API endpoints:
   - If non-integer values are provided, the API returns a `400 Bad Request` error.
   - If either `a` or `b` is missing, the API returns a `400 Bad Request` error.
 
-## Future Endpoints
+## Planned Endpoints
 The following endpoints are planned for future improvements:
 
 ### 1. Subtraction
