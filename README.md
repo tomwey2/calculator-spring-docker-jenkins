@@ -94,9 +94,15 @@ The application currently provides the following REST API endpoint:
   ```plaintext
   8
   ```
+- **Status Codes**:
+  | Code | Description                          |
+  |------|--------------------------------------|
+  | 200  | Success: Returns the sum of `a` and `b` |
+  | 400  | Bad Request: Invalid or missing parameters |
+
 - **Error Handling**:
-  - If non-integer values are provided, the API returns a `400 Bad Request` error.
-  - If either `a` or `b` is missing, the API returns a `400 Bad Request` error.
+  - If non-integer values are provided, the API returns a `400 Bad Request` error with a message: `"Invalid parameter: <parameter_name> must be an integer."`
+  - If either `a` or `b` is missing, the API returns a `400 Bad Request` error with a message: `"Missing parameter: <parameter_name>."`
 
 ## Planned Endpoints
 The following endpoints are planned for future improvements:
