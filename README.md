@@ -81,13 +81,17 @@ The application currently provides the following REST API endpoint:
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plaintext
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Invalid parameters (e.g., non-integer values)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
@@ -99,13 +103,17 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plaintext
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Invalid parameters (e.g., non-integer values)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/subtract?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   2
   ```
@@ -114,13 +122,17 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plaintext
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Invalid parameters (e.g., non-integer values)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/multiply?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   15
   ```
@@ -129,13 +141,17 @@ The following endpoints are planned for future improvements:
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plaintext
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Invalid parameters (e.g., non-integer values or division by zero)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/divide?a=6&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   2
   ```
