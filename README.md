@@ -74,28 +74,39 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoint:
+## API Documentation
+### Base URL
+All endpoints are relative to the base URL:
+```
+http://localhost:8080
+```
 
-### Addition
+### Endpoints
+#### Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**:
+  - Type: `plaintext`
+  - Example: `8`
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Invalid parameters (e.g., non-integer values)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
 
-## Future Endpoints
+### Future Endpoints
 The following endpoints are planned for future improvements:
 
-### Subtraction
+#### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
@@ -110,7 +121,7 @@ The following endpoints are planned for future improvements:
   2
   ```
 
-### Multiplication
+#### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
@@ -125,7 +136,7 @@ The following endpoints are planned for future improvements:
   15
   ```
 
-### Division
+#### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
