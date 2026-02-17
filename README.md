@@ -75,75 +75,43 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**:
+  - **Format**: Plaintext
+  - **Example**: `8`
+- **Status Codes**:
+  - `200 OK`: Successful operation
+  - `400 Bad Request`: Invalid or missing parameters
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
-  ```
-
-## Future Endpoints
-The following endpoints are planned for future improvements:
-
-### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
-
-### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
-
-### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
   ```
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
+```
+
+### Testing the Sum Endpoint
+To test the sum endpoint, you can use tools like `curl` or Postman. Here’s an example using `curl`:
+```bash
+curl "http://localhost:8080/sum?a=10&b=20"
+```
+**Expected Response**:
+```plaintext
+30
 ```
 
 ## License
