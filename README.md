@@ -1,11 +1,12 @@
 # Calculator Spring Boot Application
 
-A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
+A simple **RESTful calculator** application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD. This application provides a basic API for performing arithmetic operations, starting with the **sum function**.
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (currently supporting addition).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
+- Well-documented API endpoints for easy integration.
 
 ## Technologies
 - **Spring Boot**: Framework for building the Java application.
@@ -77,12 +78,12 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
