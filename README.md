@@ -75,76 +75,44 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoint:
 
-### Addition
-- **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+### Sum
+| **Endpoint** | **Method** | **Description** | **Parameters** | **Response** |
+|--------------|------------|-----------------|----------------|--------------|
+| `/sum`       | GET        | Adds two integers and returns the result. | `a` (integer), `b` (integer) | Plaintext or JSON (e.g., `8` or `{"result": 8}`) |
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
+#### Example Request
+```bash
+curl "http://localhost:8080/sum?a=5&b=3"
+```
 
-### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+#### Example Response
+- **Plaintext**: `8`
+- **JSON**: `{"result": 8}`
 
-### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
-
-### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+#### Error Handling
+- If either `a` or `b` is not an integer, the API returns a `400 Bad Request` with an error message.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
 ```
+
+### Example Test for Sum Endpoint
+```java
+@Test
+public void testSum() {
+    assertEquals(8, calculatorService.sum(5, 3));
+}
+```
+
+## Roadmap
+The following endpoints are planned for future improvements:
+- **Subtraction**: `GET /subtract`
+- **Multiplication**: `GET /multiply`
+- **Division**: `GET /divide`
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
