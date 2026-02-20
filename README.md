@@ -83,14 +83,18 @@ The application currently provides the following REST API endpoint:
 - **Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
+- **Response Format**: Plaintext
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Success Response**:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - If non-integer values are provided, the API may return a `500 Internal Server Error`.
+  - Future improvements may include input validation and a `400 Bad Request` response for invalid inputs.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
@@ -139,6 +143,15 @@ The following endpoints are planned for future improvements:
   ```plaintext
   2
   ```
+
+## Error Handling
+The API currently does not explicitly validate inputs and may return a `500 Internal Server Error` for invalid inputs (e.g., non-integer values). Future improvements may include:
+- Input validation to ensure only integers are accepted.
+- Returning a `400 Bad Request` response for invalid inputs.
+- Using JSON for responses to provide more detailed error messages.
+
+## API Design Notes
+The `/sum` endpoint currently returns a plaintext response for simplicity. Future versions may adopt JSON for consistency with modern APIs.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
