@@ -83,17 +83,60 @@ The application currently provides the following REST API endpoint:
 - **Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+- **Response Format**: The response is a plain text string representing the sum of `a` and `b`.
+- **Error Handling**: If invalid parameters (e.g., non-integer values) are provided, the API will return a `400 Bad Request` error.
+
+#### Examples
+1. **Basic Addition**:
+   ```bash
+   curl "http://localhost:8080/sum?a=5&b=3"
+   ```
+   **Response**:
+   ```plaintext
+   8
+   ```
+
+2. **Negative Numbers**:
+   ```bash
+   curl "http://localhost:8080/sum?a=-5&b=3"
+   ```
+   **Response**:
+   ```plaintext
+   -2
+   ```
+
+3. **Zero Values**:
+   ```bash
+   curl "http://localhost:8080/sum?a=0&b=0"
+   ```
+   **Response**:
+   ```plaintext
+   0
+   ```
+
+4. **Large Numbers**:
+   ```bash
+   curl "http://localhost:8080/sum?a=999999&b=1"
+   ```
+   **Response**:
+   ```plaintext
+   1000000
+   ```
+
+## Testing the API
+You can test the API using tools like **cURL** or **Postman**.
+
+### Using cURL
+Refer to the examples provided in the [Addition](#addition) section.
+
+### Using Postman
+1. Open Postman and create a new request.
+2. Set the request type to `GET`.
+3. Enter the URL: `http://localhost:8080/sum?a=5&b=3`.
+4. Send the request and verify the response.
 
 ## Future Endpoints
-The following endpoints are planned for future improvements:
+The following endpoints are **planned but not yet implemented**:
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
@@ -145,6 +188,18 @@ The application includes unit tests for the calculation logic and integration te
 ```bash
 mvn test
 ```
+
+## Contributing
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push to your fork.
+4. Submit a pull request.
+
+### Development Environment Setup
+1. Clone the repository.
+2. Ensure you have Java 11+ and Maven installed.
+3. Build and run the application locally.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
