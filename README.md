@@ -79,10 +79,10 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a plaintext string.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -91,6 +91,27 @@ The application currently provides the following REST API endpoint:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - If either `a` or `b` is missing or non-integer, the API returns a `400 Bad Request` error.
+  - Example Error Response:
+    ```plaintext
+    400 Bad Request: Required parameter 'a' is missing or invalid.
+    ```
+- **Status Codes**:
+  - `200 OK`: Successful response with the sum.
+  - `400 Bad Request`: Invalid or missing parameters.
+  - `500 Internal Server Error`: Unexpected server error.
+
+## Error Responses
+The API may return the following error responses:
+
+- **400 Bad Request**: Occurs when required parameters are missing or invalid.
+  - Example: `curl "http://localhost:8080/sum?a=5"`
+  - Response: `400 Bad Request: Required parameter 'b' is missing or invalid.`
+
+- **500 Internal Server Error**: Occurs when an unexpected server error happens.
+  - Example: N/A (unexpected)
+  - Response: `500 Internal Server Error: An unexpected error occurred.`
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
