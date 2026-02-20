@@ -79,18 +79,30 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as plaintext.
 - **Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
+- **Response Format**: Plaintext (e.g., `8`)
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - If non-integer values are provided, the API may return a `400 Bad Request` error.
+  - Example error response:
+    ```plaintext
+    400 Bad Request: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'
+    ```
+
+## Error Handling
+The API may return the following errors:
+- **400 Bad Request**: Occurs when invalid parameters are provided (e.g., non-integer values for `a` or `b`).
+- **500 Internal Server Error**: Occurs for unexpected server-side issues.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
@@ -139,6 +151,11 @@ The following endpoints are planned for future improvements:
   ```plaintext
   2
   ```
+
+## Future Improvements
+- Standardize API responses using JSON format.
+- Add input validation to handle edge cases gracefully.
+- Expand error messages for better debugging.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
