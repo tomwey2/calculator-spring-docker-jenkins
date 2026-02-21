@@ -79,18 +79,43 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a plaintext string.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: Plaintext string containing the sum of `a` and `b`.
+- **Status Codes**:
+  - `200 OK`: Successful response with the sum.
+  - `400 Bad Request`: Invalid or missing parameters.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+
+- **Error Handling**: If non-integer values are provided for `a` or `b`, Spring Boot will return a `400 Bad Request` error.
+- **Example Error Request**:
+  ```bash
+  curl "http://localhost:8080/sum?a=abc&b=3"
+  ```
+- **Example Error Response**:
+  ```json
+  {
+    "timestamp": "2024-06-01T12:34:56.789+00:00",
+    "status": 400,
+    "error": "Bad Request",
+    "message": "Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'",
+    "path": "/sum"
+  }
+  ```
+
+## Future Improvements
+- Add JSON responses for better interoperability.
+- Implement proper error messages for invalid inputs.
+- Add support for floating-point numbers.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
