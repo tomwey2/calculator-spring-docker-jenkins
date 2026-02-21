@@ -77,22 +77,64 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a plaintext string.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**: Plaintext string representing the sum of `a` and `b`.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
 
-## Future Endpoints
+#### Response Format
+The response is a plaintext string containing the result of the operation.
+
+#### Error Handling
+- If either `a` or `b` is missing or not an integer, the API returns an HTTP 400 Bad Request error.
+- Example Error Response:
+  ```plaintext
+  {
+    "timestamp": "2023-10-01T12:00:00.000+00:00",
+    "status": 400,
+    "error": "Bad Request",
+    "message": "Required parameter 'a' is missing.",
+    "path": "/sum"
+  }
+  ```
+
+#### Testing the API
+- **Valid Request**:
+  ```bash
+  curl "http://localhost:8080/sum?a=10&b=20"
+  ```
+  **Expected Response**:
+  ```plaintext
+  30
+  ```
+
+- **Invalid Request (Missing Parameter)**:
+  ```bash
+  curl "http://localhost:8080/sum?a=10"
+  ```
+  **Expected Response**:
+  ```plaintext
+  {
+    "timestamp": "2023-10-01T12:00:00.000+00:00",
+    "status": 400,
+    "error": "Bad Request",
+    "message": "Required parameter 'b' is missing.",
+    "path": "/sum"
+  }
+  ```
+
+## Planned Endpoints
 The following endpoints are planned for future improvements:
 
 ### Subtraction
