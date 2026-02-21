@@ -35,7 +35,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- Java 21 or higher
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -77,74 +77,86 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**: Plain text string representing the sum of `a` and `b`.
+- **Status Codes**:
+  - `200 OK`: Successful request.
+  - `400 Bad Request`: Invalid or missing parameters.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Error Handling**: If `a` or `b` are not integers, the API returns a `400 Bad Request` with an error message.
 
-## Future Endpoints
+## Planned Endpoints
 The following endpoints are planned for future improvements:
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+- **Status**: Not yet implemented.
 
 ### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
+- **Status**: Not yet implemented.
 
 ### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+- **Status**: Not yet implemented.
+
+## Error Handling
+The API uses HTTP status codes to indicate the success or failure of requests:
+
+- `200 OK`: The request was successful.
+- `400 Bad Request`: The request was invalid (e.g., missing or invalid parameters).
+- `500 Internal Server Error`: An unexpected error occurred on the server.
+
+For `400 Bad Request` responses, the body will contain an error message describing the issue.
 
 ## Testing
-The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
+To test the API endpoints, you can use tools like `curl` or Postman.
+
+### Testing the `/sum` Endpoint
+1. **Valid Inputs**:
+   ```bash
+   curl "http://localhost:8080/sum?a=5&b=3"
+   ```
+   Expected Response: `8`
+
+2. **Invalid Inputs**:
+   ```bash
+   curl "http://localhost:8080/sum?a=abc&b=3"
+   ```
+   Expected Response: `400 Bad Request` with an error message.
+
+Run the unit tests using:
 ```bash
 mvn test
 ```
+
+## Contributing
+We welcome contributions to this project! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push the branch to your fork.
+4. Open a pull request to the `main` branch of this repository.
+
+Please ensure your code follows the project's coding standards and includes appropriate tests.
+
+## Contact
+For questions or feedback, please open an issue on the [GitHub repository](https://github.com/tomwey2/calculator-spring-docker-jenkins) or contact the maintainer at [email@example.com](mailto:email@example.com).
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
