@@ -77,20 +77,37 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as plaintext.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Response**:
+  - **Success**: Plaintext result of the sum (e.g., `8`).
+  - **Error**: If non-integer values are provided, the API returns a `400 Bad Request` error.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Error Example**:
+  ```bash
+  curl "http://localhost:8080/sum?a=abc&b=3"
+  ```
+  - **Response**: `400 Bad Request`
+
+> **Note**: All endpoints return plaintext responses. Future versions may introduce JSON responses for better extensibility.
+
+## Error Handling
+The API may return the following errors:
+- **400 Bad Request**: Occurs when:
+  - Non-integer values are provided for `a` or `b`.
+  - Required parameters are missing.
+- **500 Internal Server Error**: Occurs for unexpected server-side issues.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
