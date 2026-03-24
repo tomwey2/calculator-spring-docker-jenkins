@@ -79,18 +79,47 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a JSON object.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand. Must be a valid integer within the range of `[-2147483648, 2147483647]`.
+  - `b` (integer, required): Second operand. Must be a valid integer within the range of `[-2147483648, 2147483647]`.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
+  > **Note**: Special characters in parameters should be URL-encoded.
+
 - **Response**:
-  ```plaintext
-  8
-  ```
+  - **Success (200 OK)**:
+    ```json
+    {
+      "result": 8
+    }
+    ```
+  - **Content-Type**: `application/json`
+
+- **Error Handling**:
+  - **400 Bad Request**: Returned if either `a` or `b` is missing or not a valid integer.
+    ```json
+    {
+      "error": "Invalid input",
+      "message": "Parameter 'a' must be a valid integer.",
+      "status": 400
+    }
+    ```
+  - **400 Bad Request**: Returned if the result exceeds the integer range.
+    ```json
+    {
+      "error": "Arithmetic overflow",
+      "message": "The result exceeds the maximum or minimum integer value.",
+      "status": 400
+    }
+    ```
+
+- **Additional Notes**:
+  - The endpoint supports both positive and negative integers.
+  - The endpoint does not support floating-point numbers or non-numeric inputs.
+  - For edge cases like large numbers, ensure the result stays within the integer range to avoid overflow errors.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
