@@ -79,66 +79,57 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as plaintext.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response Format**: `text/plain`
+- **HTTP Status Codes**:
+  - `200 OK`: Successful request.
+  - `400 Bad Request`: Missing or invalid parameters.
+  - `500 Internal Server Error`: Unexpected server errors.
+
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Successful Response**:
   ```plaintext
   8
   ```
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
+- **Error Scenarios**:
+  | Scenario                     | Example Request                          | Response Body                     | HTTP Status Code |
+  |------------------------------|------------------------------------------|-----------------------------------|------------------|
+  | Missing `a` parameter        | `http://localhost:8080/sum?b=3`          | `Missing required parameter: a`   | 400              |
+  | Missing `b` parameter        | `http://localhost:8080/sum?a=5`          | `Missing required parameter: b`   | 400              |
+  | Invalid `a` (non-integer)    | `http://localhost:8080/sum?a=foo&b=3`    | `Invalid parameter: a`            | 400              |
+  | Invalid `b` (non-integer)    | `http://localhost:8080/sum?a=5&b=bar`    | `Invalid parameter: b`            | 400              |
+  | Unexpected server error      | N/A                                      | `An unexpected error occurred`    | 500              |
 
-### Subtraction
+### Future Endpoints
+The following endpoints are planned for future improvements. Unless specified otherwise, they will follow the same pattern as the `/sum` endpoint:
+
+#### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 
-### Multiplication
+#### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 
-### Division
+#### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
