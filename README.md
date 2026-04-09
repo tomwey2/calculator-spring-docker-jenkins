@@ -80,17 +80,24 @@ The application currently provides the following REST API endpoint:
 ### Addition
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
+- **Request Method**: `GET`
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Request Example**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+- **Response Format**: `text/plain`
+- **Success Response**:
+  - **Status Code**: `200 OK`
+  - **Body**: The result of the addition as a plain text string (e.g., `8`).
+- **Error Responses**:
+  - **Status Code**: `400 Bad Request`
+  - **Body**: Error message if non-integer values are provided (e.g., `Invalid input: a and b must be integers`).
+- **Notes**:
+  - If either `a` or `b` is missing, the endpoint will return a `400 Bad Request` response.
+  - If non-integer values are provided, the endpoint will return a `400 Bad Request` response with an appropriate error message.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
