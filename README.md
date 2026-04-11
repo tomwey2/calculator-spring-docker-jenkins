@@ -1,17 +1,21 @@
 # Calculator Spring Boot Application
 
-A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
+A simple calculator application built with **Spring Boot 3.2**, **Java 21**, and **Maven**, containerized using **Docker** for easy deployment and integrated with **Jenkins** for CI/CD.
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (addition, subtraction, multiplication, division).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
 ## Technologies
-- **Spring Boot**: Framework for building the Java application.
-- **Docker**: Containerization of the application.
-- **Jenkins**: Automation for CI/CD pipelines.
+The application is built using the following technologies:
+- **Java 21**: The programming language used for development.
+- **Spring Boot 3.2**: Framework for building the Java application.
 - **Maven**: Build tool and dependency management.
+- **PostgreSQL**: Database for storing application data (if applicable).
+- **Lombok**: Library to reduce boilerplate code.
+- **Docker**: Containerization platform for packaging the application.
+- **Jenkins**: Automation server for CI/CD pipelines.
 
 ## Project Structure
 ```
@@ -35,7 +39,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- **Java 21** or higher
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -75,70 +79,83 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoints for arithmetic operations:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as plain text.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
-
-## Future Endpoints
-The following endpoints are planned for future improvements:
+- **Response Format**: Plain text
+- **Status Codes**:
+  - `200 OK`: Successful operation. Returns the sum of `a` and `b`.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values for `a` or `b`).
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
+- **Description**: Subtracts two integers and returns the result as plain text.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/subtract?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   2
   ```
+- **Response Format**: Plain text
+- **Status Codes**:
+  - `200 OK`: Successful operation. Returns the result of `a - b`.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values for `a` or `b`).
 
 ### Multiplication
 - **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
+- **Description**: Multiplies two integers and returns the result as plain text.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/multiply?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   15
   ```
+- **Response Format**: Plain text
+- **Status Codes**:
+  - `200 OK`: Successful operation. Returns the result of `a * b`.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values for `a` or `b`).
 
 ### Division
 - **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
+- **Description**: Divides two integers and returns the result as plain text.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/divide?a=6&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   2
   ```
+- **Response Format**: Plain text
+- **Status Codes**:
+  - `200 OK`: Successful operation. Returns the result of `a / b`.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values for `a` or `b` or division by zero).
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
