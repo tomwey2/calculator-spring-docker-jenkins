@@ -89,9 +89,11 @@ The application currently provides the following REST API endpoints:
   ```
 - **Response**:
   - **Status Code**: `200 OK`
+  - **Content-Type**: `text/plain`
   - **Body**: Plain text representation of the sum (e.g., `8`)
 - **Error Cases**:
   - **Status Code**: `400 Bad Request`
+  - **Content-Type**: `text/plain`
   - **Body**: Error message if parameters are missing or invalid (e.g., `Invalid input: 'a' and 'b' must be integers.`)
 
 ### Subtraction
