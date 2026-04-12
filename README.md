@@ -35,7 +35,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- Java 21 or higher
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -74,78 +74,73 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
-The application currently provides the following REST API endpoints:
+---
 
-### Addition (Sum)
-- **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result as a plain text response.
-- **Parameters**:
-  - `a` (integer, required): First operand
-  - `b` (integer, required): Second operand
-- **Request Example**:
-  ```bash
+## API Endpoints
+
+The application provides the following REST API endpoints for arithmetic operations:
+
+### Sum (Addition)
+
+| Property          | Details                                                                                     |
+|-------------------|---------------------------------------------------------------------------------------------|
+| **Endpoint**      | `GET /sum`                                                                                   |
+| **Description**   | Adds two integers and returns the result as a plain text response.                           |
+| **Parameters**    | `a` (integer, required): First operand<br>`b` (integer, required): Second operand           |
+| **Request Example** | ```bash
   curl -X GET "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  - **Status Code**: `200 OK`
-  - **Content-Type**: `text/plain`
-  - **Body**: Plain text representation of the sum (e.g., `8`)
-- **Error Cases**:
-  - **Status Code**: `400 Bad Request`
-  - **Content-Type**: `text/plain`
-  - **Body**: Error message if parameters are missing or invalid (e.g., `Invalid input: 'a' and 'b' must be integers.`)
+  ```                                                                 |
+| **Response**      | - **Status Code**: `200 OK`<br>- **Content-Type**: `text/plain`<br>- **Body**: Plain text representation of the sum (e.g., `8`) |
+| **Error Cases**   | - **Status Code**: `400 Bad Request`<br>- **Content-Type**: `text/plain`<br>- **Body**: Error message if parameters are missing or invalid (e.g., `Invalid input: 'a' and 'b' must be integers.`) |
 
 ### Subtraction
-- **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
-- **Parameters**:
-  - `a` (integer, required): First operand
-  - `b` (integer, required): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+
+| Property          | Details                                                                                     |
+|-------------------|---------------------------------------------------------------------------------------------|
+| **Endpoint**      | `GET /subtract`                                                                              |
+| **Description**   | Subtracts the second integer from the first and returns the result.                         |
+| **Parameters**    | `a` (integer, required): First operand<br>`b` (integer, required): Second operand           |
+| **Request Example** | ```bash
+  curl -X GET "http://localhost:8080/subtract?a=5&b=3"
+  ```                                                                 |
+| **Response**      | - **Status Code**: `200 OK`<br>- **Content-Type**: `text/plain`<br>- **Body**: Plain text representation of the result (e.g., `2`) |
+| **Error Cases**   | - **Status Code**: `400 Bad Request`<br>- **Content-Type**: `text/plain`<br>- **Body**: Error message if parameters are missing or invalid. |
 
 ### Multiplication
-- **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
-- **Parameters**:
-  - `a` (integer, required): First operand
-  - `b` (integer, required): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  15
-  ```
+
+| Property          | Details                                                                                     |
+|-------------------|---------------------------------------------------------------------------------------------|
+| **Endpoint**      | `GET /multiply`                                                                              |
+| **Description**   | Multiplies two integers and returns the result.                                              |
+| **Parameters**    | `a` (integer, required): First operand<br>`b` (integer, required): Second operand           |
+| **Request Example** | ```bash
+  curl -X GET "http://localhost:8080/multiply?a=5&b=3"
+  ```                                                                 |
+| **Response**      | - **Status Code**: `200 OK`<br>- **Content-Type**: `text/plain`<br>- **Body**: Plain text representation of the result (e.g., `15`) |
+| **Error Cases**   | - **Status Code**: `400 Bad Request`<br>- **Content-Type**: `text/plain`<br>- **Body**: Error message if parameters are missing or invalid. |
 
 ### Division
-- **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
-- **Parameters**:
-  - `a` (integer, required): First operand
-  - `b` (integer, required): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+
+| Property          | Details                                                                                     |
+|-------------------|---------------------------------------------------------------------------------------------|
+| **Endpoint**      | `GET /divide`                                                                                |
+| **Description**   | Divides the first integer by the second and returns the result.                             |
+| **Parameters**    | `a` (integer, required): First operand<br>`b` (integer, required): Second operand           |
+| **Request Example** | ```bash
+  curl -X GET "http://localhost:8080/divide?a=6&b=3"
+  ```                                                                 |
+| **Response**      | - **Status Code**: `200 OK`<br>- **Content-Type**: `text/plain`<br>- **Body**: Plain text representation of the result (e.g., `2`) |
+| **Error Cases**   | - **Status Code**: `400 Bad Request`<br>- **Content-Type**: `text/plain`<br>- **Body**: Error message if parameters are missing, invalid, or if division by zero is attempted. |
+
+---
 
 ## Testing
+
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
 ```bash
 mvn test
 ```
 
 ## License
+
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
