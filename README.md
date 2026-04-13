@@ -3,7 +3,7 @@
 A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (sum, subtraction, multiplication, division).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
@@ -80,7 +80,7 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 
 The application provides the following REST API endpoints for arithmetic operations:
 
-### Sum (Addition)
+### **Sum (Addition)**
 
 | Property          | Details                                                                                     |
 |-------------------|---------------------------------------------------------------------------------------------|
@@ -92,6 +92,8 @@ The application provides the following REST API endpoints for arithmetic operati
   ```                                                                 |
 | **Response**      | - **Status Code**: `200 OK`<br>- **Content-Type**: `text/plain`<br>- **Body**: Plain text representation of the sum (e.g., `8`) |
 | **Error Cases**   | - **Status Code**: `400 Bad Request`<br>- **Content-Type**: `text/plain`<br>- **Body**: Error message if parameters are missing or invalid (e.g., `Invalid input: 'a' and 'b' must be integers.`) |
+
+---
 
 ### Subtraction
 
