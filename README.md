@@ -77,21 +77,6 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
-- **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
-- **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  8
-  ```
-
 ## Future Endpoints
 The following endpoints are planned for future improvements:
 
@@ -139,6 +124,25 @@ The following endpoints are planned for future improvements:
   ```plaintext
   2
   ```
+
+### Sum
+- **Endpoint**: `GET /sum`
+- **Description**: Adds two integers and returns the result. **This endpoint is currently available.**
+- **Parameters**:
+  - `a` (integer): First operand
+  - `b` (integer): Second operand
+- **Example Request**:
+  ```bash
+  curl "http://localhost:8080/sum?a=5&b=3"
+  ```
+- **Response**:
+  ```plaintext
+  8
+  ```
+
+#### Error Cases
+- **Invalid Input**: If non-integer values are provided for `a` or `b`, the endpoint will return a `400 Bad Request` response.
+- **Missing Parameters**: If either `a` or `b` is missing, the endpoint will return a `400 Bad Request` response.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
