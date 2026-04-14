@@ -79,66 +79,81 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as plain text.
+- **HTTP Method**: `GET`
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
+  curl -X GET "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+- **Success Response**:
+  - **Status Code**: `200 OK`
+  - **Content**: Plain text representation of the result (e.g., `8`).
+- **Error Responses**:
+  - **Status Code**: `400 Bad Request`
+  - **Content**: Error message if parameters are missing or invalid (e.g., non-integer values).
 
-## Future Endpoints
-The following endpoints are planned for future improvements:
+## Future Endpoints (Planned)
+The following endpoints are **planned for future implementation** and are not yet available in the current version:
 
 ### Subtraction
+- **Status**: Planned
 - **Endpoint**: `GET /subtract`
-- **Description**: Subtracts two integers and returns the result.
+- **Description**: Subtracts two integers and returns the result as plain text.
+- **HTTP Method**: `GET`
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
+  curl -X GET "http://localhost:8080/subtract?a=5&b=3"
   ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+- **Success Response**:
+  - **Status Code**: `200 OK`
+  - **Content**: Plain text representation of the result (e.g., `2`).
+- **Error Responses**:
+  - **Status Code**: `400 Bad Request`
+  - **Content**: Error message if parameters are missing or invalid (e.g., non-integer values).
 
 ### Multiplication
+- **Status**: Planned
 - **Endpoint**: `GET /multiply`
-- **Description**: Multiplies two integers and returns the result.
+- **Description**: Multiplies two integers and returns the result as plain text.
+- **HTTP Method**: `GET`
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
+  curl -X GET "http://localhost:8080/multiply?a=5&b=3"
   ```
-- **Response**:
-  ```plaintext
-  15
-  ```
+- **Success Response**:
+  - **Status Code**: `200 OK`
+  - **Content**: Plain text representation of the result (e.g., `15`).
+- **Error Responses**:
+  - **Status Code**: `400 Bad Request`
+  - **Content**: Error message if parameters are missing or invalid (e.g., non-integer values).
 
 ### Division
+- **Status**: Planned
 - **Endpoint**: `GET /divide`
-- **Description**: Divides two integers and returns the result.
+- **Description**: Divides two integers and returns the result as plain text.
+- **HTTP Method**: `GET`
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
+  curl -X GET "http://localhost:8080/divide?a=6&b=3"
   ```
-- **Response**:
-  ```plaintext
-  2
-  ```
+- **Success Response**:
+  - **Status Code**: `200 OK`
+  - **Content**: Plain text representation of the result (e.g., `2`).
+- **Error Responses**:
+  - **Status Code**: `400 Bad Request`
+  - **Content**: Error message if parameters are missing, invalid, or if division by zero is attempted.
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
