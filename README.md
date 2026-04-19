@@ -77,12 +77,12 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand. Must be a valid integer.
+  - `b` (integer, required): Second operand. Must be a valid integer.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
@@ -91,6 +91,22 @@ The application currently provides the following REST API endpoint:
   ```plaintext
   8
   ```
+- **Status Codes**:
+  - `200 OK`: Successful response with the sum result.
+  - `400 Bad Request`: Invalid or missing parameters. This occurs if either `a` or `b` is missing or not a valid integer.
+- **Error Handling**:
+  - If either `a` or `b` is missing, the response will be:
+    ```plaintext
+    {"error":"Missing parameter: a or b"}
+    ```
+  - If either `a` or `b` is not a valid integer, the response will be:
+    ```plaintext
+    {"error":"Invalid parameter: a or b must be an integer"}
+    ```
+  - If the parameters are out of the valid range for integers, the response will be:
+    ```plaintext
+    {"error":"Invalid parameter: a or b must be within the valid integer range"}
+    ```
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
