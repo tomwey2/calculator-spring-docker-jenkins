@@ -35,7 +35,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- Java 21 or higher
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -75,25 +75,36 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application currently provides the following REST API endpoints:
 
-### Addition
+### Addition (Sum)
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as plain text.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**:
+  - **Content-Type**: `text/plain`
+  - **Body**: The result of the addition as plain text (e.g., `8`).
+  - **Status Codes**:
+    - `200 OK`: Successful operation.
+    - `400 Bad Request`: Invalid parameters (e.g., non-integer values).
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
-
-## Future Endpoints
-The following endpoints are planned for future improvements:
+- **Error Example**:
+  ```bash
+  curl "http://localhost:8080/sum?a=5&b=abc"
+  ```
+  **Response**:
+  ```plaintext
+  400 Bad Request
+  ```
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
