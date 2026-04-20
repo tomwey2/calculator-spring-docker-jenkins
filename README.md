@@ -77,20 +77,49 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ## API Endpoints
 The application currently provides the following REST API endpoint:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a string.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
+  - `a` (integer, required): First operand
+  - `b` (integer, required): Second operand
+- **Response**:
+  - **Success**: Returns the sum of `a` and `b` as a plain text string.
+  - **Error**: Returns a `400 Bad Request` if either `a` or `b` is not provided or is not a valid integer.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Edge Cases**:
+  - **Negative Numbers**:
+    ```bash
+    curl "http://localhost:8080/sum?a=-5&b=3"
+    ```
+    Response:
+    ```plaintext
+    -2
+    ```
+  - **Zero Values**:
+    ```bash
+    curl "http://localhost:8080/sum?a=0&b=0"
+    ```
+    Response:
+    ```plaintext
+    0
+    ```
+  - **Large Numbers**:
+    ```bash
+    curl "http://localhost:8080/sum?a=2147483647&b=1"
+    ```
+    Response:
+    ```plaintext
+    -2147483648
+    ```
+    (Note: This is due to integer overflow in Java.)
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
