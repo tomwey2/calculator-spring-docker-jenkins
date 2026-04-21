@@ -74,7 +74,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ### CI/CD with Jenkins
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
-## API Endpoints
+## REST API Documentation
 The application currently provides the following REST API endpoint:
 
 ### Addition
@@ -83,14 +83,16 @@ The application currently provides the following REST API endpoint:
 - **Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
+- **Response**: The result of the addition as a plain text string.
 - **Example Request**:
   ```bash
   curl "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Example Response**:
   ```plaintext
   8
   ```
+- **Error Handling**: If invalid parameters are provided, the API will return an appropriate error response.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
