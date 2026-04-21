@@ -106,6 +106,12 @@ The application currently provides the following REST API endpoint:
   ```
   Expected response: `0`
 
+- **Large Numbers**:
+  ```bash
+  curl "http://localhost:8080/sum?a=1000000&b=2000000"
+  ```
+  Expected response: `3000000`
+
 #### Error Handling
 - If non-integer values are provided, the API will return a `400 Bad Request` error.
 
