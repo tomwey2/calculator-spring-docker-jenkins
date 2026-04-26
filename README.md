@@ -83,14 +83,34 @@ The application currently provides the following REST API endpoint:
 - **Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+- **Response Format**: The response is returned as plaintext, e.g., `"8"` for the sum of 5 and 3.
+- **Error Handling**: If invalid parameters (e.g., non-integer values) are provided, the endpoint will return a `400 Bad Request` error.
+- **Examples**:
+  - **Example Request with Positive Numbers**:
+    ```bash
+    curl "http://localhost:8080/sum?a=5&b=3"
+    ```
+    **Response**:
+    ```plaintext
+    8
+    ```
+  - **Example Request with Negative Numbers**:
+    ```bash
+    curl "http://localhost:8080/sum?a=-5&b=3"
+    ```
+    **Response**:
+    ```plaintext
+    -2
+    ```
+  - **Example Request with Zero**:
+    ```bash
+    curl "http://localhost:8080/sum?a=0&b=3"
+    ```
+    **Response**:
+    ```plaintext
+    3
+    ```
+- **Constraints**: The endpoint accepts integer values. For very large numbers, integer overflow may occur.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
