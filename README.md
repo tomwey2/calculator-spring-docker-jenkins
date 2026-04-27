@@ -79,7 +79,7 @@ The application currently provides the following REST API endpoint:
 
 ### Addition
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a plaintext response.
 - **Parameters**:
   - `a` (integer): First operand
   - `b` (integer): Second operand
@@ -91,9 +91,24 @@ The application currently provides the following REST API endpoint:
   ```plaintext
   8
   ```
+- **Error Handling**:
+  - If non-integer values are provided, the API will return a `400 Bad Request` error.
+
+## Testing the API
+You can test the API endpoints using `curl` or tools like Postman. Here are some examples:
+
+- **Using `curl`**:
+  ```bash
+  curl "http://localhost:8080/sum?a=10&b=20"
+  ```
+
+- **Using Postman**:
+  1. Open Postman and create a new GET request.
+  2. Enter the URL: `http://localhost:8080/sum?a=10&b=20`
+  3. Send the request and observe the response.
 
 ## Future Endpoints
-The following endpoints are planned for future improvements:
+The following endpoints are planned for future improvements but are not yet available:
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
