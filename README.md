@@ -75,9 +75,9 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
+The application provides the following REST API endpoints for basic arithmetic operations:
 
-### Addition
+### Sum
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result.
 - **Parameters**:
