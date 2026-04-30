@@ -13,4 +13,18 @@ class CalculatorServiceTest {
         assertEquals(5, calculatorService.sum(2, 3));
     }
     
+    @Test
+    public void squareTestPositive() {
+        assertEquals(9, calculatorService.square(3));
+    }
+    
+    @Test
+    public void squareTestNegative() {
+        assertEquals(9, calculatorService.square(-3));
+    }
+    
+    @Test
+    public void squareTestZero() {
+        assertEquals(0, calculatorService.square(0));
+    }
 }
