@@ -79,21 +79,41 @@ The application currently provides the following REST API endpoint:
 
 ### Sum
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result as a plain text response.
+- **Description**: Adds two integers and returns the result as a plain text response. This endpoint accepts two integer parameters, `a` and `b`, and returns their sum. The response is a plain text representation of the result.
 - **Parameters**:
-  - `a` (required, integer): First operand
-  - `b` (required, integer): Second operand
-- **Example Request**:
-  ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
-  ```
-- **Response**:
-  ```plaintext
-  8
-  ```
+  - `a` (required, integer): First operand. Must be a valid integer.
+  - `b` (required, integer): Second operand. Must be a valid integer.
+- **Response Format**: Plain text (`text/plain`)
+- **Example Requests**:
+  - Basic addition:
+    ```bash
+    curl "http://localhost:8080/sum?a=5&b=3"
+    ```
+    **Response**:
+    ```plaintext
+    8
+    ```
+  - Addition with negative numbers:
+    ```bash
+    curl "http://localhost:8080/sum?a=-5&b=3"
+    ```
+    **Response**:
+    ```plaintext
+    -2
+    ```
+  - Addition with zero:
+    ```bash
+    curl "http://localhost:8080/sum?a=0&b=0"
+    ```
+    **Response**:
+    ```plaintext
+    0
+    ```
 - **Status Codes**:
   - `200 OK`: Successful response with the sum of the two integers.
-  - `400 Bad Request`: Invalid or missing parameters.
+  - `400 Bad Request`: Invalid or missing parameters. This occurs if either `a` or `b` is not provided or is not a valid integer.
+- **Error Handling**:
+  - If either `a` or `b` is missing or invalid, the endpoint returns a `400 Bad Request` status code with an error message indicating the issue.
 
 ## Future Endpoints
 The following endpoints are planned for future improvements:
