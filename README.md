@@ -79,24 +79,30 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
 ### Addition (Sum)
 - **Endpoint**: `GET /sum`
 - **Description**: Adds two integers and returns the result as plain text.
+- **Content-Type**: `text/plain`
 - **Parameters**:
   - `a` (integer, required): First operand
   - `b` (integer, required): Second operand
 - **Request Format**:
   ```bash
-  GET /sum?a=<integer>&b=<integer>
+  GET /sum?a=<integer>&b=<integer> HTTP/1.1
+  Host: localhost:8080
   ```
 - **Example Request**:
   ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
+  curl -X GET "http://localhost:8080/sum?a=5&b=3"
   ```
 - **Response**:
-  ```plaintext
+  ```
+  HTTP/1.1 200 OK
+  Content-Type: text/plain
+  
   8
   ```
 - **Error Cases**:
   - If `a` or `b` is missing, the API returns a `400 Bad Request` response.
   - If `a` or `b` is not a valid integer, the API returns a `400 Bad Request` response.
+  - If the result exceeds the integer limit, the API may return an unexpected result due to integer overflow.
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
@@ -109,7 +115,7 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
   curl "http://localhost:8080/subtract?a=5&b=3"
   ```
 - **Response**:
-  ```plaintext
+  ```
   2
   ```
 
@@ -124,7 +130,7 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
   curl "http://localhost:8080/multiply?a=5&b=3"
   ```
 - **Response**:
-  ```plaintext
+  ```
   15
   ```
 
@@ -139,7 +145,7 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
   curl "http://localhost:8080/divide?a=6&b=3"
   ```
 - **Response**:
-  ```plaintext
+  ```
   2
   ```
 
