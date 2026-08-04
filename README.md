@@ -84,7 +84,7 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
   - `a` (integer, required): First operand
   - `b` (integer, required): Second operand
 - **Request Format**:
-  ```bash
+  ```
   GET /sum?a=<integer>&b=<integer> HTTP/1.1
   Host: localhost:8080
   ```
@@ -92,11 +92,11 @@ The project includes a `Jenkinsfile` for automated build and deployment pipeline
   ```bash
   curl -X GET "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Success Response**:
   ```
   HTTP/1.1 200 OK
   Content-Type: text/plain
-  
+
   8
   ```
 - **Error Cases**:
