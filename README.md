@@ -3,7 +3,7 @@
 A simple calculator application built with **Spring Boot**, containerized using **Docker**, and integrated with **Jenkins** for CI/CD.
 
 ## Features
-- REST API for basic arithmetic operations.
+- REST API for basic arithmetic operations (addition, subtraction, multiplication, division).
 - Containerized using Docker for easy deployment.
 - CI/CD pipeline using Jenkins for automated builds and deployments.
 
@@ -35,7 +35,7 @@ A simple calculator application built with **Spring Boot**, containerized using 
 ```
 
 ## Prerequisites
-- Java 11 or higher
+- Java 21 or higher
 - Maven
 - Docker (optional, for containerization)
 - Jenkins (optional, for CI/CD)
@@ -75,70 +75,78 @@ A simple calculator application built with **Spring Boot**, containerized using 
 The project includes a `Jenkinsfile` for automated build and deployment pipelines. Ensure Jenkins is properly configured to execute the pipeline.
 
 ## API Endpoints
-The application currently provides the following REST API endpoint:
 
-### Addition
+### Addition (Sum)
 - **Endpoint**: `GET /sum`
-- **Description**: Adds two integers and returns the result.
+- **Description**: Adds two integers and returns the result as a plain text string.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/sum?a=5&b=3"
+  curl -X GET "http://localhost:8080/sum?a=5&b=3"
   ```
-- **Response**:
+- **Response Example**:
   ```plaintext
   8
   ```
-
-## Future Endpoints
-The following endpoints are planned for future improvements:
+- **Response Status Codes**:
+  - `200 OK`: Successful operation.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values).
 
 ### Subtraction
 - **Endpoint**: `GET /subtract`
 - **Description**: Subtracts two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/subtract?a=5&b=3"
+  curl -X GET "http://localhost:8080/subtract?a=5&b=3"
   ```
-- **Response**:
+- **Response Example**:
   ```plaintext
   2
   ```
+- **Response Status Codes**:
+  - `200 OK`: Successful operation.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values).
 
 ### Multiplication
 - **Endpoint**: `GET /multiply`
 - **Description**: Multiplies two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/multiply?a=5&b=3"
+  curl -X GET "http://localhost:8080/multiply?a=5&b=3"
   ```
-- **Response**:
+- **Response Example**:
   ```plaintext
   15
   ```
+- **Response Status Codes**:
+  - `200 OK`: Successful operation.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values).
 
 ### Division
 - **Endpoint**: `GET /divide`
 - **Description**: Divides two integers and returns the result.
 - **Parameters**:
-  - `a` (integer): First operand
-  - `b` (integer): Second operand
-- **Example Request**:
+  - `a` (integer, required): First operand.
+  - `b` (integer, required): Second operand.
+- **Request Example**:
   ```bash
-  curl "http://localhost:8080/divide?a=6&b=3"
+  curl -X GET "http://localhost:8080/divide?a=6&b=3"
   ```
-- **Response**:
+- **Response Example**:
   ```plaintext
   2
   ```
+- **Response Status Codes**:
+  - `200 OK`: Successful operation.
+  - `400 Bad Request`: Invalid input (e.g., non-integer values).
 
 ## Testing
 The application includes unit tests for the calculation logic and integration tests for the API. Run the tests using:
